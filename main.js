@@ -36,7 +36,7 @@ function validateCred (arr) {
     	checkSum = checkSum + arr[i] * 2;
     }
 	}
-	if (checkSum % 10 === 0) {
+  if (checkSum % 10 === 0) {
     return true;
   } else {
     return false;
