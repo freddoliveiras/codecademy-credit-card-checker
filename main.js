@@ -25,7 +25,7 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 // Add your functions below:
 
 function validateCred (arr) {
-	let checkSum = 0;
+  let checkSum = 0;
   for (let i = arr.length - 1; i >= 0; i -= 2) {
     checkSum = checkSum + arr[i];
   }
