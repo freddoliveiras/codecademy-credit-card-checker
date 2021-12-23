@@ -84,7 +84,7 @@ function ccStrToNum (strNum) {
   return outputArr;
 }
 
-// Task 7, 1st point.
+// Task 7, 3rd point.
 function fixCheckDigit (ccArr) {
   let checkSum = 0;
   let outputArr = [];
