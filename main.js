@@ -1,3 +1,13 @@
+let dbComp = [1,2,3,4,5,6,7,89];
+function fTest () {
+  for (let i = 0; i < dbComp.legth; i++){
+    console.log ('edrft');
+  }
+}
+
+console.log (fTest());
+
+    
 // All valid credit card numbers
 const valid1 = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8];
 const valid2 = [5, 5, 3, 5, 7, 6, 6, 7, 6, 8, 7, 5, 1, 4, 3, 9];
@@ -25,7 +35,7 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 // Add your functions below:
 
 function validateCred (arr) {
-  let checkSum = 0;
+	let checkSum = 0;
   for (let i = arr.length - 1; i >= 0; i -= 2) {
     checkSum = checkSum + arr[i];
   }
@@ -36,7 +46,7 @@ function validateCred (arr) {
     	checkSum = checkSum + arr[i] * 2;
     }
 	}
-  if (checkSum % 10 === 0) {
+	if (checkSum % 10 === 0) {
     return true;
   } else {
     return false;
@@ -51,9 +61,11 @@ function idInvalidCardCompanies (invalidCards) {
   let dbComp = [[3,'Amex (American Express)'],[4,'Visa'],[5,'Mastercard'],[6,'Discover']];  
   let probComp = [];
   for (let i = 0; i < dbComp.length; i++) {
+
     let idComp = dbComp[i][0];
     let namComp = dbComp[i][1];
     for (let j = 0; j < invalidCards.length; j++) {
+        console.log('testestes');
       let idCompCard = invalidCards[j][0]; 
       if (idCompCard === idComp) {
         if (!probComp.includes(namComp)) {
