@@ -133,5 +133,5 @@ console.log (ccStrToNum('4539677908016808'));
 //fixCheckDigit function Test
 let test = mystery4;
 console.log ('\nfixCheckDigit function Test\nTry varying credit cards (variable \'test\')');
-console.log (test + ' >>>> ' + validateCred(test));
-console.log (fixCheckDigit(test) + ' >>>> ' + validateCred(fixCheckDigit(test)));
+console.log (test + ' >>>> ' + validateCred(test) + ' incorrect digit ');
+console.log (fixCheckDigit(test) + ' >>>> ' + validateCred(fixCheckDigit(test)) + ' fixed ');
