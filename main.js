@@ -1,13 +1,3 @@
-let dbComp = [1,2,3,4,5,6,7,89];
-function fTest () {
-  for (let i = 0; i < dbComp.legth; i++){
-    console.log ('edrft');
-  }
-}
-
-console.log (fTest());
-
-    
 // All valid credit card numbers
 const valid1 = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8];
 const valid2 = [5, 5, 3, 5, 7, 6, 6, 7, 6, 8, 7, 5, 1, 4, 3, 9];
@@ -34,6 +24,7 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 
+// Task 3.
 function validateCred (arr) {
 	let checkSum = 0;
   for (let i = arr.length - 1; i >= 0; i -= 2) {
@@ -53,19 +44,19 @@ function validateCred (arr) {
   }
 }
 
+// Task 4.
 function findInvalidCards (pkt) {
   return pkt.filter (element => !validateCred(element))
 }
 
+// Task 5.
 function idInvalidCardCompanies (invalidCards) {
   let dbComp = [[3,'Amex (American Express)'],[4,'Visa'],[5,'Mastercard'],[6,'Discover']];  
   let probComp = [];
   for (let i = 0; i < dbComp.length; i++) {
-
     let idComp = dbComp[i][0];
     let namComp = dbComp[i][1];
     for (let j = 0; j < invalidCards.length; j++) {
-        console.log('testestes');
       let idCompCard = invalidCards[j][0]; 
       if (idCompCard === idComp) {
         if (!probComp.includes(namComp)) {
@@ -83,4 +74,64 @@ function idInvalidCardCompanies (invalidCards) {
   return probComp;
 }
 
+// Task 7, 2nd point.
+function ccStrToNum (strNum) {
+  let tempArr = strNum.split('');
+  let outputArr = []; 
+  for (i = 0; i < tempArr.length; i++){
+    outputArr.push(parseInt(tempArr[i]));
+  }
+  return outputArr;
+}
+
+// Task 7, 1st point.
+function fixCheckDigit (ccArr) {
+  let checkSum = 0;
+  let outputArr = [];
+  if (validateCred(ccArr)) {
+    return ccArr;
+  } else {
+    for (let i = ccArr.length - 3; i >= 0; i -= 2) { // process numbers just added
+      checkSum = checkSum + ccArr[i];
+    }
+    for (let i = ccArr.length - 2; i >= 0; i -= 2) { //processes ruled calculations
+      if (ccArr[i] * 2 > 9) {
+    	  checkSum = checkSum + ccArr[i] * 2 - 9;
+      } else {
+    	  checkSum = checkSum + ccArr[i] * 2;
+      }
+	  }
+  }
+  outputArr = ccArr.slice(0,ccArr.length-1); //removes the incorrect check digit
+  checkDigit = 10 - checkSum % 10;
+  if (checkDigit !== 10) {
+    outputArr.push (checkDigit);
+  } else {
+    outputArr.push (0);
+  }
+    return outputArr;
+}
+
+// TESTS
+
+// validateCred function Test 
+console.log ('validateCred function Test \n(checks if a number is valid)');
+console.log ('invalid1 is valid? ' + validateCred(invalid1));
+
+//findInvalidCards function test
+console.log ('\nThese cards are not valid: ');
+console.log (findInvalidCards(batch));
+
+//idInvalidCardCompanies function Test
+console.log ('\nidInvalidCardCompanies function Test \n(return the companies with problems)');
 console.log (idInvalidCardCompanies(findInvalidCards(batch)));
+
+//ccStrToNum function Test
+console.log ('\nccStrToNum function Test \n(converts the string 4539677908016808 to an array)');
+console.log (ccStrToNum('4539677908016808'));
+
+//fixCheckDigit function Test
+let test = mystery5;
+console.log ('\nfixCheckDigit function Test\nTry varying credit cards (variable \'test\')');
+console.log (test + ' >>>> ' + validateCred(test));
+console.log (fixCheckDigit(test) + ' >>>> ' + validateCred(fixCheckDigit(test)));
